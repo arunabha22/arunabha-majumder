@@ -1,0 +1,535 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Arunabha Majumder — Robotics & Actuator R&D Engineer</title>
+<meta name="description" content="Mechanical & Robotics R&D Engineer (PhD, Aalborg University) — actuator development, exoskeletons, controls and hardware prototyping.">
+<meta property="og:title" content="Arunabha Majumder — Robotics & Actuator R&D Engineer">
+<meta property="og:description" content="Actuator development, wearable robotics, controls and hardware systems. Aalborg, Denmark.">
+<meta property="og:image" content="photo.jpg">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%231f5e3b'/><text x='16' y='22' font-family='Arial' font-weight='700' font-size='15' fill='white' text-anchor='middle'>AM</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f5f0; --surface:#ffffff; --ink:#15181a; --muted:#5b6166; --line:#dcdad2;
+  --accent:#1f5e3b; --accent-soft:#e3eee6; --accent-ink:#ffffff; --grid:rgba(21,24,26,.045);
+  --shadow:0 1px 2px rgba(0,0,0,.04),0 8px 24px rgba(0,0,0,.06);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0f1311; --surface:#161b18; --ink:#e8ece9; --muted:#9aa39e; --line:#2a322e;
+    --accent:#6fcf97; --accent-soft:#1b2c22; --accent-ink:#0f1311; --grid:rgba(232,236,233,.035);
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.35);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0f1311; --surface:#161b18; --ink:#e8ece9; --muted:#9aa39e; --line:#2a322e;
+  --accent:#6fcf97; --accent-soft:#1b2c22; --accent-ink:#0f1311; --grid:rgba(232,236,233,.035);
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font:16px/1.65 "IBM Plex Sans",system-ui,sans-serif;
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:32px 32px;
+}
+a{color:inherit}
+img{max-width:100%;display:block}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+h1,h2,h3{font-family:"Space Grotesk",sans-serif;line-height:1.15;margin:0;letter-spacing:-.01em}
+.mono{font-family:"IBM Plex Mono",monospace}
+
+/* nav */
+header.nav{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+header.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;gap:16px}
+.brand{font-family:"Space Grotesk";font-weight:700;text-decoration:none;font-size:18px}
+.brand span{color:var(--accent)}
+nav ul{list-style:none;display:flex;gap:22px;margin:0;padding:0}
+nav a{text-decoration:none;font-size:14px;color:var(--muted)}
+nav a:hover{color:var(--ink)}
+.theme-btn{background:none;border:1px solid var(--line);color:var(--ink);border-radius:8px;width:36px;height:36px;cursor:pointer;display:grid;place-items:center}
+.nav-right{display:flex;align-items:center;gap:18px}
+
+/* hero */
+.hero{padding:72px 0 56px}
+.hero .wrap{display:grid;grid-template-columns:1.35fr .9fr;gap:56px;align-items:center}
+.eyebrow{font-family:"IBM Plex Mono";font-size:13px;color:var(--accent);letter-spacing:.06em;text-transform:uppercase;margin-bottom:18px;display:flex;align-items:center;gap:10px}
+.eyebrow::before{content:"";width:28px;height:2px;background:var(--accent)}
+.hero h1{font-size:clamp(40px,6vw,64px);font-weight:700}
+.hero .role{font-size:clamp(18px,2.2vw,22px);color:var(--muted);margin:16px 0 0;font-weight:500}
+.hero p.lede{margin:22px 0 0;max-width:560px}
+.loc{display:inline-flex;gap:8px;align-items:center;margin-top:18px;font-size:14px;color:var(--muted)}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:10px;font-weight:600;font-size:15px;text-decoration:none;border:1px solid var(--line);background:var(--surface);transition:transform .15s,border-color .15s}
+.btn:hover{transform:translateY(-1px);border-color:var(--accent)}
+.btn.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.btn svg{width:18px;height:18px}
+.portrait{position:relative;max-width:380px;justify-self:end;width:100%}
+.portrait::before{content:"";position:absolute;inset:-6% -8% 10% -8%;background:radial-gradient(closest-side,color-mix(in srgb,var(--accent) 22%,transparent),transparent);z-index:-1;filter:blur(8px)}
+.portrait img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:50% 30%;border-radius:999px 999px 24px 24px;box-shadow:0 20px 50px -18px rgba(0,0,0,.35);border:6px solid var(--surface)}
+
+/* metrics */
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:14px;background:var(--surface);overflow:hidden}
+.metric{padding:22px 22px 20px;border-right:1px solid var(--line)}
+.metric:last-child{border-right:0}
+.metric .n{font-family:"Space Grotesk";font-size:34px;font-weight:700;color:var(--accent);line-height:1}
+.metric .l{font-size:14px;color:var(--muted);margin-top:8px;line-height:1.45}
+
+/* sections */
+section{padding:72px 0 8px}
+.sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:28px}
+.sec-head .num{font-family:"IBM Plex Mono";font-size:13px;color:var(--accent)}
+.sec-head h2{font-size:30px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:26px}
+
+/* about */
+.about{display:grid;grid-template-columns:1.4fr 1fr;gap:24px}
+.about p{margin:0 0 14px}
+.about p:last-child{margin:0}
+.facts{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.facts li{display:flex;justify-content:space-between;gap:16px;border-bottom:1px dashed var(--line);padding-bottom:12px;font-size:15px}
+.facts li:last-child{border:0;padding:0}
+.facts span:first-child{color:var(--muted)}
+.facts span:last-child{text-align:right;font-weight:500}
+
+/* experience */
+.timeline{position:relative;display:grid;gap:20px}
+.job{display:grid;grid-template-columns:190px 1fr;gap:28px}
+.job .when{font-family:"IBM Plex Mono";font-size:13px;color:var(--muted);padding-top:28px}
+.job .when b{display:block;color:var(--ink);font-weight:500;font-size:14px;margin-bottom:4px}
+.job h3{font-size:20px}
+.job .org{color:var(--accent);font-weight:600;margin:6px 0 14px;font-size:15px}
+.job ul{margin:0;padding-left:18px}
+.job li{margin-bottom:9px}
+.job li:last-child{margin-bottom:0}
+.job li strong{font-weight:600}
+.tag{display:inline-block;font-family:"IBM Plex Mono";font-size:12px;padding:3px 9px;border-radius:999px;background:var(--accent-soft);color:var(--accent);margin-left:8px;vertical-align:middle;white-space:nowrap}
+.job a.ext{color:var(--accent);font-size:14px;font-weight:600;text-decoration:none;display:inline-block;margin-top:12px}
+
+/* video */
+.video-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:24px;align-items:center}
+.yt{position:relative;aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:#000;border:1px solid var(--line);box-shadow:var(--shadow);cursor:pointer}
+.yt img{width:100%;height:100%;object-fit:cover;opacity:.9;transition:opacity .2s}
+.yt:hover img{opacity:1}
+.yt .play{position:absolute;inset:0;display:grid;place-items:center}
+.yt .play span{width:74px;height:52px;border-radius:14px;background:#e62117;display:grid;place-items:center;box-shadow:0 6px 20px rgba(0,0,0,.35)}
+.yt iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.video-grid h3{font-size:22px;margin-bottom:10px}
+.video-grid p{margin:0 0 12px;color:var(--muted)}
+
+/* skills */
+.skills{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.skills h3{font-size:16px;margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.skills h3 i{width:8px;height:8px;background:var(--accent);border-radius:2px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-size:14px;padding:5px 11px;border:1px solid var(--line);border-radius:8px;background:var(--bg)}
+
+/* pubs / awards */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.list{list-style:none;margin:0;padding:0;display:grid;gap:18px}
+.list li{padding-left:18px;border-left:2px solid var(--line)}
+.list li.hi{border-color:var(--accent)}
+.list .t{font-weight:600}
+.list .m{font-size:14px;color:var(--muted);margin-top:3px}
+.pub .t{font-style:normal}
+
+/* certificates */
+.certs{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.cert{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden;cursor:zoom-in;text-align:left;padding:0;font:inherit;color:inherit;transition:transform .2s,box-shadow .2s,border-color .2s}
+.cert:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:var(--accent)}
+.cert .thumb{aspect-ratio:1.414/1;background:#eef0f2;overflow:hidden;border-bottom:1px solid var(--line)}
+.cert .thumb img{width:100%;height:100%;object-fit:cover}
+.cert .body{padding:16px 18px 18px}
+.cert .yr{font-family:"IBM Plex Mono";font-size:12px;color:var(--accent)}
+.cert h3{font-size:16px;margin:6px 0 4px}
+.cert p{margin:0;font-size:14px;color:var(--muted)}
+.lightbox{position:fixed;inset:0;background:rgba(8,10,9,.88);display:none;align-items:center;justify-content:center;padding:24px;z-index:50;cursor:zoom-out}
+.lightbox.open{display:flex}
+.lightbox img{max-width:min(1200px,100%);max-height:88vh;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.lightbox button{position:absolute;top:16px;right:16px;width:40px;height:40px;border-radius:50%;border:0;background:rgba(255,255,255,.12);color:#fff;font-size:22px;cursor:pointer}
+.insta{display:inline-flex;align-items:center;gap:6px;margin-top:12px;color:var(--accent);font-weight:600;font-size:14px;text-decoration:none}
+.insta svg{width:16px;height:16px}
+
+/* education */
+.edu{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.edu .yr{font-family:"IBM Plex Mono";font-size:13px;color:var(--accent)}
+.edu h3{font-size:18px;margin:10px 0 8px}
+.edu p{margin:0;color:var(--muted);font-size:14px}
+
+/* beyond */
+.beyond{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.beyond h3{font-size:17px;margin-bottom:8px}
+.beyond p{margin:0;color:var(--muted);font-size:15px}
+.icon{width:40px;height:40px;border-radius:10px;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;margin-bottom:16px}
+.icon svg{width:22px;height:22px}
+
+/* contact */
+.contact{margin:80px 0 0;padding:56px 0;border-top:1px solid var(--line);background:var(--surface)}
+.contact .wrap{display:flex;justify-content:space-between;align-items:center;gap:32px;flex-wrap:wrap}
+.contact h2{font-size:clamp(28px,4vw,40px)}
+.contact p{color:var(--muted);margin:10px 0 0;max-width:520px}
+footer{padding:22px 0;font-size:13px;color:var(--muted);background:var(--surface)}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+
+/* responsive */
+@media (max-width:900px){
+  nav ul{display:none}
+  .hero{padding:40px 0 40px}
+  .hero .wrap{grid-template-columns:1fr;gap:40px}
+  .hero .wrap{gap:28px}
+  .portrait{order:-1;justify-self:start;width:168px}
+  .portrait img{aspect-ratio:1;border-radius:50%;border-width:4px;object-position:50% 50%}
+  .portrait::before{inset:-20%}
+  .metrics{grid-template-columns:repeat(2,1fr)}
+  .metric:nth-child(2){border-right:0}
+  .metric:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  .about,.video-grid,.two{grid-template-columns:1fr}
+  .edu,.beyond{grid-template-columns:1fr}
+  .certs{gap:14px}
+  .cert .body{padding:12px 14px 14px}
+  .cert h3{font-size:15px}
+  .job{grid-template-columns:1fr;gap:6px}
+  .job .when{padding-top:0}
+  .job .when b{display:inline;margin-right:8px}
+}
+@media (max-width:600px){
+  .wrap{padding:0 16px}
+  .skills,.certs{grid-template-columns:1fr}
+  .card{padding:20px}
+  .metric{padding:18px 16px}
+  .metric .n{font-size:28px}
+  section{padding:56px 0 4px}
+}
+@media print{header.nav,.theme-btn{display:none}body{background:#fff}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top">Arunabha<span>.</span></a>
+    <div class="nav-right">
+      <nav><ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#video">Video</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#certificates">Certificates</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul></nav>
+      <button class="theme-btn" id="themeBtn" aria-label="Toggle dark mode">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <!-- HERO -->
+  <div class="hero">
+    <div class="wrap">
+      <div>
+        <div class="eyebrow">PhD · Mechatronics &amp; Robotics</div>
+        <h1>Arunabha Majumder</h1>
+        <p class="role">Mechanical &amp; Robotics R&amp;D Engineer — actuator development, controls &amp; hardware systems</p>
+        <p class="lede">I design, build and test electromechanical systems end to end — from CAD and analytical stiffness models to fabricated prototypes, embedded control and human-subject validation. My focus is variable-stiffness actuators and wearable robotics.</p>
+        <div class="loc">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>
+          Aalborg, Denmark
+        </div>
+        <div class="cta">
+          <a class="btn primary" href="mailto:97arunabhasit027@gmail.com">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>Get in touch</a>
+          <a class="btn" href="https://www.linkedin.com/in/arunabha-majumder-681264107/" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5.2c0-1.2 0-2.8-1.7-2.8s-2 1.3-2 2.7V21h-4z"/></svg>LinkedIn</a>
+          <a class="btn" href="Arunabha_Majumder_CV.pdf" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0-4-4m4 4 4-4M5 21h14"/></svg>Download CV</a>
+        </div>
+      </div>
+      <div class="portrait">
+        <picture>
+          <source media="(max-width: 900px)" srcset="avatar.jpg">
+          <img src="photo.jpg" alt="Portrait of Arunabha Majumder" width="800" height="1000">
+        </picture>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap reveal">
+    <div class="metrics">
+      <div class="metric"><div class="n">&gt;25%</div><div class="l">lower exoskeleton energy use with a hybrid actuation design</div></div>
+      <div class="metric"><div class="n">&gt;15%</div><div class="l">less user muscle effort with an Assist-as-Needed controller</div></div>
+      <div class="metric"><div class="n">&lt;10%</div><div class="l">RMS error, analytical stiffness model vs. hardware</div></div>
+      <div class="metric"><div class="n">0.3%</div><div class="l">position-tracking error on a non-linear pneumatic muscle</div></div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap reveal">
+      <div class="sec-head"><span class="num">01</span><h2>About</h2></div>
+      <div class="about">
+        <div class="card">
+          <p>I'm a Mechatronics and Mechanical R&amp;D engineer with hands-on experience in product development: designing, prototyping and testing dynamic electromechanical systems, variable-stiffness actuators and robotic mechanisms.</p>
+          <p>My strength is bridging the whole chain: CAD modelling, analytical kinematic and stiffness analysis, dynamic control, and sensor integration, all ending in hardware that works and is validated with real users.</p>
+          <p>I'm also a trained visual artist, so I care about clear technical communication, from sketches to publication figures.</p>
+        </div>
+        <div class="card">
+          <ul class="facts">
+            <li><span>Currently</span><span>PhD Researcher, Aalborg University</span></li>
+            <li><span>Focus</span><span>Actuators · Exoskeletons · Controls</span></li>
+            <li><span>Based in</span><span>Aalborg, Denmark</span></li>
+            <li><span>Languages</span><span>English (C1) · Bengali · Hindi</span></li>
+            <li><span>Certification</span><span>SolidWorks Associate (CSWA)</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="wrap reveal">
+      <div class="sec-head"><span class="num">02</span><h2>Experience</h2></div>
+      <div class="timeline">
+        <div class="job">
+          <div class="when"><b>2023 — Present</b>Aalborg, Denmark</div>
+          <div class="card">
+            <h3>Research Engineer — Robotics &amp; Actuator Development <span class="tag">PhD · VIEXO</span></h3>
+            <div class="org">Aalborg University</div>
+            <ul>
+              <li><strong>Cut shoulder-exoskeleton energy consumption by &gt;25%</strong> with a hybrid actuation architecture pairing a parallel spring with a 6 Nm motor to offload quasi-static gravity torque. Won Best Paper Award, IFToMM ISRM 2026.</li>
+              <li><strong>Reduced anterior deltoid muscle effort by &gt;15%</strong> by deploying an Assist-as-Needed hybrid controller on prototype hardware, validated on human subjects.</li>
+              <li><strong>Removed the need for an external force/torque sensor</strong> in a 5-bar parallel robot via sensorless force estimation from the actuator torque–deflection characteristic, which cut cost, mass and integration complexity.</li>
+              <li><strong>Validated analytical stiffness models to &lt;10% RMS error</strong> by mapping variable-stiffness actuator states into Cartesian workspace stiffness, de-risking the mechanism before fabrication.</li>
+              <li>Designed and ran a <strong>12-participant human trial</strong> (3 assistance modes × 2 loads): power analysis, EMG and motion-capture instrumentation, ethics protocol and data pipeline, producing the dataset for two journal submissions.</li>
+              <li>Built the full prototype stack: SolidWorks CAD &amp; FEA, fabrication, motor/encoder/force-sensor and DAQ integration, embedded control, and automated test rigs.</li>
+            </ul>
+            <a class="ext" href="https://www.viexo.aau.dk/" target="_blank" rel="noopener">VIEXO project →</a>
+          </div>
+        </div>
+
+        <div class="job">
+          <div class="when"><b>2020 — 2022</b>Durgapur, India</div>
+          <div class="card">
+            <h3>M.Tech Researcher — Actuator Systems <span class="tag">Master's thesis</span></h3>
+            <div class="org">CSIR – Central Mechanical Engineering Research Institute (National Laboratory, Govt. of India)</div>
+            <ul>
+              <li><strong>Reduced position-tracking error to 0.3–0.78%</strong> with a Neural-Network-based gain-scheduled PID controller for a highly non-linear pneumatic actuator, outperforming classical PID under varying axial load.</li>
+              <li>Fabricated pneumatic artificial muscles in-house from raw materials, integrating valves, pressure sensors and DAQ to characterise load–displacement behaviour and derive an empirical actuator model.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="job">
+          <div class="when"><b>2018 — 2019</b>Tumakuru, India</div>
+          <div class="card">
+            <h3>Mechanical Engineer — Rehabilitation Robotics <span class="tag">Capstone</span></h3>
+            <div class="org">Siddaganga Institute of Technology</div>
+            <ul>
+              <li>Delivered an award-winning <strong>upper-limb rehabilitation exoskeleton</strong> that won the Best Major Project Award and a <strong>₹100,000 TATA Technologies Innovation Grant</strong>. Led CAD design, fabrication and user testing end to end.</li>
+            </ul>
+            <a class="ext" href="#video">Watch the project video →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIDEO -->
+  <section id="video">
+    <div class="wrap reveal">
+      <div class="sec-head"><span class="num">03</span><h2>Project in action</h2></div>
+      <div class="video-grid">
+        <div class="yt" id="yt" data-id="q5Ystz9NCpQ" data-start="7" role="button" tabindex="0" aria-label="Play video">
+          <img src="https://i.ytimg.com/vi/q5Ystz9NCpQ/hqdefault.jpg" alt="Video thumbnail: upper-limb rehabilitation exoskeleton" loading="lazy">
+          <div class="play"><span><svg width="26" height="26" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span></div>
+        </div>
+        <div>
+          <h3>Upper-limb rehabilitation exoskeleton</h3>
+          <p>My bachelor's capstone: an exoskeleton for upper-limb rehabilitation, taken from concept through CAD, fabrication and user testing.</p>
+          <p>Recognised with the Best Major Project Award and a TATA Technologies Innovation Grant (2019).</p>
+          <a class="btn" href="https://www.youtube.com/watch?v=q5Ystz9NCpQ&amp;t=7s" target="_blank" rel="noopener">Open on YouTube</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="wrap reveal">
+      <div class="sec-head"><span class="num">04</span><h2>Skills &amp; tools</h2></div>
+      <div class="skills">
+        <div class="card">
+          <h3><i></i>Design &amp; modelling</h3>
+          <div class="chips"><span class="chip">SolidWorks</span><span class="chip">Fusion 360</span><span class="chip">FEA</span><span class="chip">Design for Assembly</span><span class="chip">Mechanical product development</span><span class="chip">Actuator &amp; robotic mechanisms</span><span class="chip">3D printing (Bambu Lab, Cura)</span></div>
+        </div>
+        <div class="card">
+          <h3><i></i>Robotics &amp; controls</h3>
+          <div class="chips"><span class="chip">Compliant / variable-stiffness actuation</span><span class="chip">Analytical kinematic &amp; stiffness modelling</span><span class="chip">Control systems</span><span class="chip">Neural-network control</span><span class="chip">Automation</span><span class="chip">Pneumatic control</span></div>
+        </div>
+        <div class="card">
+          <h3><i></i>Testing &amp; hardware</h3>
+          <div class="chips"><span class="chip">Prototype fabrication</span><span class="chip">Sensor integration</span><span class="chip">Custom test rigs</span><span class="chip">Qualisys motion capture</span><span class="chip">Force/torque sensors</span><span class="chip">EMG</span><span class="chip">Biomechanical analysis</span><span class="chip">Human-subject trials</span></div>
+        </div>
+        <div class="card">
+          <h3><i></i>Software</h3>
+          <div class="chips"><span class="chip">MATLAB / Simulink</span><span class="chip">Arduino</span><span class="chip">LaTeX</span><span class="chip">Python (basic)</span><span class="chip">LabVIEW (basic)</span><span class="chip">Adobe Illustrator</span><span class="chip">Photoshop</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESEARCH -->
+  <section id="research">
+    <div class="wrap reveal">
+      <div class="sec-head"><span class="num">05</span><h2>Publications &amp; awards</h2></div>
+      <div class="two">
+        <div class="card">
+          <h3 style="font-size:17px;margin-bottom:18px">Selected publications</h3>
+          <ul class="list pub">
+            <li class="hi"><div class="t">A Hybrid Actuated Shoulder Exoskeleton for Energy-Efficient Upper Arm Support</div><div class="m"><b>Majumder, A.</b>, Wagner, J.W., Zhu, Y., Oliveira, A.S., Bai, S. — Robotics and Mechatronics: ISRM 2026, MMS vol. 213, Springer. <em>Best Research Paper Award.</em></div></li>
+            <li><div class="t">Neural Network-Based Gain Scheduled Position Control of a Pneumatic Artificial Muscle</div><div class="m"><b>Majumder, A.</b>, Sarkar, D., Chakraborty, S., Singh, A., Roy, S.S., Arora, A. — IEEE CONECCT, 2022.</div></li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3 style="font-size:17px;margin-bottom:18px">Awards &amp; certifications</h3>
+          <ul class="list">
+            <li class="hi"><div class="t">Best Research Paper Award</div><div class="m">9th IFToMM Int. Symposium on Robotics and Mechatronics, 2026</div></li>
+            <li><div class="t">TATA Technologies Innovation Award</div><div class="m">₹100,000 grant, 2019</div></li>
+            <li><div class="t">Best Major Project Award</div><div class="m">Dept. of Mechanical Engineering, SIT, 2019</div></li>
+            <li><div class="t">Certified SolidWorks Associate (CSWA)</div><div class="m">Mechanical Design</div></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATES -->
+  <section id="certificates">
+    <div class="wrap reveal">
+      <div class="sec-head"><span class="num">06</span><h2>Certificates</h2></div>
+      <div class="certs">
+        <button class="cert" data-full="certs/iftomm-best-paper-2026.jpg" aria-label="View Best Research Paper Award certificate">
+          <div class="thumb"><img src="certs/iftomm-best-paper-2026.jpg" alt="IFToMM ISRM 2026 Best Research Paper Award certificate" loading="lazy"></div>
+          <div class="body"><div class="yr">July 2026 · Hanoi, Vietnam</div><h3>Best Research Paper Award</h3><p>9th IFToMM ISRM: hybrid-actuated shoulder exoskeleton</p></div>
+        </button>
+        <button class="cert" data-full="certs/tata-prayatna-2019.jpg" aria-label="View TATA Technologies Prayatna award certificate">
+          <div class="thumb"><img src="certs/tata-prayatna-2019.jpg" alt="TATA Technologies Prayatna Certificate of Award" loading="lazy"></div>
+          <div class="body"><div class="yr">2018 – 19 · Pune, India</div><h3>TATA Technologies Innovation Award</h3><p>Prayatna program: "Exoskeleton for Paralytic Arm"</p></div>
+        </button>
+        <button class="cert" data-full="certs/solidworks-cswa-2017.jpg" aria-label="View SolidWorks CSWA certificate">
+          <div class="thumb"><img src="certs/solidworks-cswa-2017.jpg" alt="Certified SolidWorks Associate certificate" loading="lazy"></div>
+          <div class="body"><div class="yr">Nov 2017 · Dassault Systèmes</div><h3>Certified SolidWorks Associate</h3><p>Mechanical Design (CSWA) · ID C-U3XLTW5AYR</p></div>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <div class="wrap reveal">
+      <div class="sec-head"><span class="num">07</span><h2>Education</h2></div>
+      <div class="edu">
+        <div class="card"><div class="yr">2023 — Present</div><h3>Ph.D., Mechatronics &amp; Robotics</h3><p>Aalborg University, Dept. of Materials and Production, Denmark</p></div>
+        <div class="card"><div class="yr">2020 — 2022</div><h3>M.Tech, Mechatronics</h3><p>AcSIR – CSIR-CMERI, Durgapur, India</p></div>
+        <div class="card"><div class="yr">2015 — 2019</div><h3>B.Tech, Mechanical Engineering</h3><p>Siddaganga Institute of Technology (VTU), Tumakuru, India</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BEYOND -->
+  <section id="beyond">
+    <div class="wrap reveal">
+      <div class="sec-head"><span class="num">08</span><h2>Beyond the lab</h2></div>
+      <div class="beyond">
+        <div class="card">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="17" r="3"/><circle cx="18" cy="17" r="3"/><path d="M9 17h6M4 13l3-5h7l3 5"/></svg></div>
+          <h3>Custom Go-Kart (2017)</h3>
+          <p>Led end-to-end development of a custom-fabricated go-kart built from the ground up.</p>
+        </div>
+        <div class="card">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></div>
+          <h3>Efficycle (2018)</h3>
+          <p>Worked in a multidisciplinary team to engineer an eco-friendly human–electric hybrid vehicle.</p>
+        </div>
+        <div class="card">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18z"/><circle cx="11" cy="11" r="2"/></svg></div>
+          <h3>Visual arts</h3>
+          <p>Diploma in Fine Arts (Painting), Bangiya Sangeet Parishad. I bring sketching and graphic design to technical visuals.</p>
+          <a class="insta" href="https://www.instagram.com/surreal_art_engine/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>@surreal_art_engine →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- CONTACT -->
+<div class="contact" id="contact">
+  <div class="wrap">
+    <div>
+      <h2>Let's build something that moves.</h2>
+      <p>Open to R&amp;D roles in robotics, actuator development, mechatronics and medical devices. References available on request.</p>
+    </div>
+    <div class="cta" style="margin:0">
+      <a class="btn primary" href="mailto:97arunabhasit027@gmail.com">97arunabhasit027@gmail.com</a>
+      <a class="btn" href="https://www.linkedin.com/in/arunabha-majumder-681264107/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="https://www.instagram.com/surreal_art_engine/" target="_blank" rel="noopener">Instagram · Art</a>
+    </div>
+  </div>
+</div>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Certificate preview"><button aria-label="Close">×</button><img alt=""></div>
+<footer><div class="wrap">© <span id="yr">2026</span> Arunabha Majumder · Aalborg, Denmark</div></footer>
+
+<script>
+// theme toggle (remembers choice when storage is available)
+(function(){
+  var root=document.documentElement, btn=document.getElementById('themeBtn');
+  try{var s=localStorage.getItem('theme'); if(s) root.setAttribute('data-theme',s);}catch(e){}
+  btn.addEventListener('click',function(){
+    var cur=root.getAttribute('data-theme') || (matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+    var next=cur==='dark'?'light':'dark';
+    root.setAttribute('data-theme',next);
+    try{localStorage.setItem('theme',next);}catch(e){}
+  });
+})();
+// click-to-load YouTube (keeps the page fast)
+(function(){
+  var el=document.getElementById('yt');
+  function load(){
+    el.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+el.dataset.id+'?autoplay=1&rel=0&start='+el.dataset.start+'" title="Project video" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>';
+    el.removeAttribute('role'); el.style.cursor='default';
+  }
+  el.addEventListener('click',load,{once:true});
+  el.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();load();}});
+})();
+// certificate lightbox
+(function(){
+  var lb=document.getElementById('lightbox'), im=lb.querySelector('img');
+  document.querySelectorAll('.cert').forEach(function(c){
+    c.addEventListener('click',function(){im.src=c.dataset.full;im.alt=c.querySelector('img').alt;lb.classList.add('open');});
+  });
+  lb.addEventListener('click',function(){lb.classList.remove('open');});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')lb.classList.remove('open');});
+})();
+// reveal on scroll
+(function(){
+  var els=document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return;}
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.08});
+  els.forEach(function(e){io.observe(e)});
+})();
+document.getElementById('yr').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
