@@ -8,26 +8,26 @@
 <meta property="og:title" content="Arunabha Majumder — Robotics & Actuator R&D Engineer">
 <meta property="og:description" content="Actuator development, wearable robotics, controls and hardware systems. Aalborg, Denmark.">
 <meta property="og:image" content="photo.jpg">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%231f5e3b'/><text x='16' y='22' font-family='Arial' font-weight='700' font-size='15' fill='white' text-anchor='middle'>AM</text></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23138D90'/><text x='16' y='22' font-family='Arial' font-weight='700' font-size='15' fill='white' text-anchor='middle'>AM</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#f6f5f0; --surface:#ffffff; --ink:#15181a; --muted:#5b6166; --line:#dcdad2;
-  --accent:#1f5e3b; --accent-soft:#e3eee6; --accent-ink:#ffffff; --grid:rgba(21,24,26,.045);
+  --bg:#f3f6f7; --surface:#ffffff; --ink:#15181a; --muted:#5b6166; --line:#dde3e5;
+  --accent:#138D90; --accent-soft:#e0f2f2; --accent-ink:#ffffff; --grid:rgba(21,24,26,.04);
   --shadow:0 1px 2px rgba(0,0,0,.04),0 8px 24px rgba(0,0,0,.06);
 }
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
-    --bg:#0f1311; --surface:#161b18; --ink:#e8ece9; --muted:#9aa39e; --line:#2a322e;
-    --accent:#6fcf97; --accent-soft:#1b2c22; --accent-ink:#0f1311; --grid:rgba(232,236,233,.035);
+    --bg:#171c22; --surface:#20262e; --ink:#e8ece9; --muted:#9aa39e; --line:#323a44;
+    --accent:#4fd1c5; --accent-soft:#11292a; --accent-ink:#0f1a1d; --grid:rgba(232,236,233,.035);
     --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.35);
   }
 }
 :root[data-theme="dark"]{
-  --bg:#0f1311; --surface:#161b18; --ink:#e8ece9; --muted:#9aa39e; --line:#2a322e;
-  --accent:#6fcf97; --accent-soft:#1b2c22; --accent-ink:#0f1311; --grid:rgba(232,236,233,.035);
+  --bg:#171c22; --surface:#20262e; --ink:#e8ece9; --muted:#9aa39e; --line:#323a44;
+  --accent:#4fd1c5; --accent-soft:#11292a; --accent-ink:#0f1a1d; --grid:rgba(232,236,233,.035);
   --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.35);
 }
 *{box-sizing:border-box}
@@ -70,8 +70,9 @@ nav a:hover{color:var(--ink)}
 .btn.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
 .btn svg{width:18px;height:18px}
 .portrait{position:relative;max-width:380px;justify-self:end;width:100%}
-.portrait::before{content:"";position:absolute;inset:-6% -8% 10% -8%;background:radial-gradient(closest-side,color-mix(in srgb,var(--accent) 22%,transparent),transparent);z-index:-1;filter:blur(8px)}
-.portrait img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:50% 30%;border-radius:999px 999px 24px 24px;box-shadow:0 20px 50px -18px rgba(0,0,0,.35);border:6px solid var(--surface)}
+.portrait::before{display:none;content:"";position:absolute;inset:-6% -8% 10% -8%;background:radial-gradient(closest-side,color-mix(in srgb,var(--accent) 22%,transparent),transparent);z-index:-1;filter:blur(8px)}
+.portrait img{width:100%;height:auto;aspect-ratio:1;object-fit:cover;object-position:50% 30%;border-radius:0;border:0;box-shadow:none}
+.pname{background:var(--accent);color:var(--accent-ink);text-align:center;font-weight:700;font-size:19px;letter-spacing:.01em;padding:13px 10px}
 
 /* metrics */
 .metrics{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:14px;background:var(--surface);overflow:hidden}
@@ -187,7 +188,8 @@ footer{padding:22px 0;font-size:13px;color:var(--muted);background:var(--surface
   .hero .wrap{grid-template-columns:1fr;gap:40px}
   .hero .wrap{gap:28px}
   .portrait{order:-1;justify-self:start;width:168px}
-  .portrait img{aspect-ratio:1;border-radius:50%;border-width:4px;object-position:50% 50%}
+  .portrait img{aspect-ratio:1;border-radius:0;border:0;object-position:50% 30%}
+  .pname{font-size:13px;padding:7px 4px}
   .portrait::before{inset:-20%}
   .metrics{grid-template-columns:repeat(2,1fr)}
   .metric:nth-child(2){border-right:0}
@@ -242,7 +244,7 @@ footer{padding:22px 0;font-size:13px;color:var(--muted);background:var(--surface
         <div class="eyebrow">PhD · Mechatronics &amp; Robotics</div>
         <h1>Arunabha Majumder</h1>
         <p class="role">Mechanical &amp; Robotics R&amp;D Engineer — actuator development, controls &amp; hardware systems</p>
-        <p class="lede">I design, build and test electromechanical systems end to end — from CAD and analytical stiffness models to fabricated prototypes, embedded control and human-subject validation. My focus is variable-stiffness actuators and wearable robotics.</p>
+        <p class="lede">I design, build and test robotic mechanisms, actuators and exoskeletons. I go from hand sketches and SolidWorks CAD to 3D printed prototypes, motor and sensor integration, and tests with real people.</p>
         <div class="loc">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>
           Aalborg, Denmark
@@ -258,9 +260,10 @@ footer{padding:22px 0;font-size:13px;color:var(--muted);background:var(--surface
       </div>
       <div class="portrait">
         <picture>
-          <source media="(max-width: 900px)" srcset="avatar.jpg">
-          <img src="photo.jpg" alt="Portrait of Arunabha Majumder" width="800" height="1000">
+          <source media="(max-width: 900px)" srcset="new_pictures_exo_6.jpg">
+          <img src="new_pictures_exo_6.jpg" alt="Arunabha Majumder wearing his shoulder exoskeleton" width="425" height="530">
         </picture>
+        <div class="pname">Arunabha Majumder</div>
       </div>
     </div>
   </div>
@@ -280,14 +283,14 @@ footer{padding:22px 0;font-size:13px;color:var(--muted);background:var(--surface
       <div class="sec-head"><span class="num">01</span><h2>About</h2></div>
       <div class="about">
         <div class="card">
-          <p>I'm a Mechatronics and Mechanical R&amp;D engineer with hands-on experience in product development: designing, prototyping and testing dynamic electromechanical systems, variable-stiffness actuators and robotic mechanisms.</p>
-          <p>My strength is bridging the whole chain: CAD modelling, analytical kinematic and stiffness analysis, dynamic control, and sensor integration, all ending in hardware that works and is validated with real users.</p>
-          <p>I'm also a trained visual artist, so I care about clear technical communication, from sketches to publication figures.</p>
+          <p>I'm a mechanical and mechatronics engineer. My PhD research at Aalborg University is finished, and I'm now writing my thesis, which I expect to finish in March.</p>
+          <p>Most of my work is hardware worn on the human arm. I designed a shoulder exoskeleton where a spring mechanism and a 6 Nm motor share the load, and it uses over 25% less motor energy. That work won the Best Paper Award at IFToMM ISRM 2026. I also designed a 5-bar parallel robot and estimated its stiffness with less than 10% error.</p>
+          <p>I like the whole chain: sketching the idea, doing the CAD and the calculations, building the prototype, putting the motors and sensors in and testing it. I also hold a Senior Diploma in Fine Arts and do graphic design, so I sketch everything by hand first.</p>
         </div>
         <div class="card">
           <ul class="facts">
-            <li><span>Currently</span><span>PhD Researcher, Aalborg University</span></li>
-            <li><span>Focus</span><span>Actuators · Exoskeletons · Controls</span></li>
+            <li><span>Currently</span><span>Research Assistant (PhD), Aalborg University</span></li>
+            <li><span>Focus</span><span>Exoskeletons · Robot mechanisms · Prototyping</span></li>
             <li><span>Based in</span><span>Aalborg, Denmark</span></li>
             <li><span>Languages</span><span>English (C1) · Bengali · Hindi</span></li>
             <li><span>Certification</span><span>SolidWorks Associate (CSWA)</span></li>
@@ -305,15 +308,17 @@ footer{padding:22px 0;font-size:13px;color:var(--muted);background:var(--surface
         <div class="job">
           <div class="when"><b>2023 — Present</b>Aalborg, Denmark</div>
           <div class="card">
-            <h3>Research Engineer — Robotics &amp; Actuator Development <span class="tag">PhD · VIEXO</span></h3>
+            <h3>Research Assistant — Robotics <span class="tag">PhD · VIEXO</span></h3>
             <div class="org">Aalborg University</div>
             <ul>
-              <li><strong>Cut shoulder-exoskeleton energy consumption by &gt;25%</strong> with a hybrid actuation architecture pairing a parallel spring with a 6 Nm motor to offload quasi-static gravity torque. Won Best Paper Award, IFToMM ISRM 2026.</li>
-              <li><strong>Reduced anterior deltoid muscle effort by &gt;15%</strong> by deploying an Assist-as-Needed hybrid controller on prototype hardware, validated on human subjects.</li>
-              <li><strong>Removed the need for an external force/torque sensor</strong> in a 5-bar parallel robot via sensorless force estimation from the actuator torque–deflection characteristic, which cut cost, mass and integration complexity.</li>
-              <li><strong>Validated analytical stiffness models to &lt;10% RMS error</strong> by mapping variable-stiffness actuator states into Cartesian workspace stiffness, de-risking the mechanism before fabrication.</li>
-              <li>Designed and ran a <strong>12-participant human trial</strong> (3 assistance modes × 2 loads): power analysis, EMG and motion-capture instrumentation, ethics protocol and data pipeline, producing the dataset for two journal submissions.</li>
-              <li>Built the full prototype stack: SolidWorks CAD &amp; FEA, fabrication, motor/encoder/force-sensor and DAQ integration, embedded control, and automated test rigs.</li>
+              <li><strong>Designed a hybrid shoulder exoskeleton</strong>: a variable stiffness mechanism, with a worm gear that pretensions the spring, working in parallel with a 6 Nm motor. It uses <strong>over 25% less motor energy</strong>, which means longer battery life. Best Paper Award, IFToMM ISRM 2026.</li>
+              <li>Optimised the mechanism with a <strong>genetic algorithm</strong> (diameter, spring stiffness, pretension force), made the CAD and drawings in SolidWorks, 3D printed the first parts and had the final parts manufactured.</li>
+              <li>Integrated the <strong>motor, encoder and force/torque sensors</strong> and measured the stiffness the exoskeleton can provide on a physical test setup.</li>
+              <li>Ran a <strong>12-participant exoskeleton study</strong> (3 assistance modes × 2 loads), collecting EMG and motion data with the Qualisys system. The data went into one journal submission.</li>
+              <li>Worked in a team of 3 on an <strong>Assist-as-Needed controller</strong> that reduced anterior deltoid muscle effort by more than 15%. My part was the equations (such as the Fourier fit) and defining what the GUI should do.</li>
+              <li><strong>Designed and modelled a novel 5-bar planar parallel robot</strong> with variable stiffness mechanisms (VSM), estimated its stiffness with less than 10% error, and quantified human arm impedance. Force was estimated from the variable stiffness actuators and the robot's Jacobian, without a force sensor at the end effector.</li>
+              <li>Arm impedance study with the 5-bar robot (6 participants): Qualisys cameras recorded the arm position data, and I implemented an Arduino-based trigger to sync the robot's motion with the recording.</li>
+              <li>Taught university courses and supervised Bachelor's students (2023 – 2025).</li>
             </ul>
             <a class="ext" href="https://www.viexo.aau.dk/" target="_blank" rel="noopener">VIEXO project →</a>
           </div>
@@ -322,11 +327,11 @@ footer{padding:22px 0;font-size:13px;color:var(--muted);background:var(--surface
         <div class="job">
           <div class="when"><b>2020 — 2022</b>Durgapur, India</div>
           <div class="card">
-            <h3>M.Tech Researcher — Actuator Systems <span class="tag">Master's thesis</span></h3>
+            <h3>M.Tech Researcher — Soft Exosuit <span class="tag">Master's thesis</span></h3>
             <div class="org">CSIR – Central Mechanical Engineering Research Institute (National Laboratory, Govt. of India)</div>
             <ul>
-              <li><strong>Reduced position-tracking error to 0.3–0.78%</strong> with a Neural-Network-based gain-scheduled PID controller for a highly non-linear pneumatic actuator, outperforming classical PID under varying axial load.</li>
-              <li>Fabricated pneumatic artificial muscles in-house from raw materials, integrating valves, pressure sensors and DAQ to characterise load–displacement behaviour and derive an empirical actuator model.</li>
+              <li>In a team of 4 electronics and mechanical engineers, <strong>fabricated silicone-based pneumatic artificial muscles</strong> for a soft exosuit and worked with the pressure valves and test setup.</li>
+              <li><strong>Designed the outer PID loop</strong>, with integral anti-windup and error nonlinearisation, of a neural network-based gain-scheduled controller in MATLAB/Simulink and implemented it in LabVIEW to drive the pneumatic muscle (<strong>0.3–0.78% error</strong>, IEEE CONECCT 2022).</li>
             </ul>
           </div>
         </div>
@@ -334,10 +339,11 @@ footer{padding:22px 0;font-size:13px;color:var(--muted);background:var(--surface
         <div class="job">
           <div class="when"><b>2018 — 2019</b>Tumakuru, India</div>
           <div class="card">
-            <h3>Mechanical Engineer — Rehabilitation Robotics <span class="tag">Capstone</span></h3>
+            <h3>Bachelor's Capstone — Rehabilitation Robotics <span class="tag">Capstone</span></h3>
             <div class="org">Siddaganga Institute of Technology</div>
             <ul>
-              <li>Delivered an award-winning <strong>upper-limb rehabilitation exoskeleton</strong> that won the Best Major Project Award and a <strong>₹100,000 TATA Technologies Innovation Grant</strong>. Led CAD design, fabrication and user testing end to end.</li>
+              <li>Built an <strong>arm exoskeleton and an exo glove</strong> for a paralysed arm, with servo motors and Arduino-based control: CAD, machining, assembly and user testing.</li>
+              <li>Won the <strong>Best Major Project Award</strong>, funded by a <strong>₹100,000 TATA Technologies Prayatna grant</strong>.</li>
             </ul>
             <a class="ext" href="#video">Watch the project video →</a>
           </div>
@@ -372,7 +378,7 @@ footer{padding:22px 0;font-size:13px;color:var(--muted);background:var(--surface
       <div class="skills">
         <div class="card">
           <h3><i></i>Design &amp; modelling</h3>
-          <div class="chips"><span class="chip">SolidWorks</span><span class="chip">Fusion 360</span><span class="chip">FEA</span><span class="chip">Design for Assembly</span><span class="chip">Mechanical product development</span><span class="chip">Actuator &amp; robotic mechanisms</span><span class="chip">3D printing (Bambu Lab, Cura)</span></div>
+          <div class="chips"><span class="chip">SolidWorks</span><span class="chip">Fusion 360 (basic)</span><span class="chip">Design for Assembly</span><span class="chip">Mechanical product development</span><span class="chip">Actuator &amp; robotic mechanisms</span><span class="chip">3D printing (Bambu Lab, Cura)</span></div>
         </div>
         <div class="card">
           <h3><i></i>Robotics &amp; controls</h3>
@@ -380,11 +386,11 @@ footer{padding:22px 0;font-size:13px;color:var(--muted);background:var(--surface
         </div>
         <div class="card">
           <h3><i></i>Testing &amp; hardware</h3>
-          <div class="chips"><span class="chip">Prototype fabrication</span><span class="chip">Sensor integration</span><span class="chip">Custom test rigs</span><span class="chip">Qualisys motion capture</span><span class="chip">Force/torque sensors</span><span class="chip">EMG</span><span class="chip">Biomechanical analysis</span><span class="chip">Human-subject trials</span></div>
+          <div class="chips"><span class="chip">Prototype fabrication</span><span class="chip">Sensor integration</span><span class="chip">Physical test setups</span><span class="chip">Qualisys motion capture</span><span class="chip">Force/torque sensors</span><span class="chip">EMG</span><span class="chip">Human-subject data collection</span><span class="chip">Human-subject trials</span></div>
         </div>
         <div class="card">
           <h3><i></i>Software</h3>
-          <div class="chips"><span class="chip">MATLAB / Simulink</span><span class="chip">Arduino</span><span class="chip">LaTeX</span><span class="chip">Python (basic)</span><span class="chip">LabVIEW (basic)</span><span class="chip">Adobe Illustrator</span><span class="chip">Photoshop</span></div>
+          <div class="chips"><span class="chip">MATLAB / Simulink</span><span class="chip">Arduino</span><span class="chip">LaTeX</span><span class="chip">Python (basic)</span><span class="chip">LabVIEW (basic)</span><span class="chip">Adobe Illustrator</span><span class="chip">Photoshop</span><span class="chip">Procreate</span></div>
         </div>
       </div>
     </div>
@@ -442,6 +448,7 @@ footer{padding:22px 0;font-size:13px;color:var(--muted);background:var(--surface
       <div class="sec-head"><span class="num">07</span><h2>Education</h2></div>
       <div class="edu">
         <div class="card"><div class="yr">2023 — Present</div><h3>Ph.D., Mechatronics &amp; Robotics</h3><p>Aalborg University, Dept. of Materials and Production, Denmark</p></div>
+        <div class="card"><div class="yr">Sep — Nov 2025</div><h3>Study abroad, National University of Singapore</h3><p>Independent research stay during my PhD</p></div>
         <div class="card"><div class="yr">2020 — 2022</div><h3>M.Tech, Mechatronics</h3><p>AcSIR – CSIR-CMERI, Durgapur, India</p></div>
         <div class="card"><div class="yr">2015 — 2019</div><h3>B.Tech, Mechanical Engineering</h3><p>Siddaganga Institute of Technology (VTU), Tumakuru, India</p></div>
       </div>
@@ -456,8 +463,8 @@ footer{padding:22px 0;font-size:13px;color:var(--muted);background:var(--surface
         <div class="card">
           <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="17" r="3"/><circle cx="18" cy="17" r="3"/><path d="M9 17h6M4 13l3-5h7l3 5"/></svg></div>
           <h3>Custom Go-Kart (2017)</h3>
-          <p>Led end-to-end development of a custom-fabricated go-kart built from the ground up.</p>
-          <p><a href="https://youtu.be/KqmF3FYkMTk" target="_blank" rel="noopener" style="color:var(--accent, #2ecc71); font-weight:1000; text-decoration:none;">Watch the video &rarr;</a></p>
+          <p>Built a custom go-kart from scratch with a student team.</p>
+          <p><a href="https://youtu.be/KqmF3FYkMTk" target="_blank" rel="noopener" style="color:var(--accent, var(--accent)); font-weight:1000; text-decoration:none;">Watch the video &rarr;</a></p>
         </div>
         <div class="card">
           <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></div>
