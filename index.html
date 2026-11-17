@@ -8,26 +8,26 @@
 <meta property="og:title" content="Arunabha Majumder — Robotics & Actuator R&D Engineer">
 <meta property="og:description" content="Actuator development, wearable robotics, controls and hardware systems. Aalborg, Denmark.">
 <meta property="og:image" content="photo.jpg">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23138D90'/><text x='16' y='22' font-family='Arial' font-weight='700' font-size='15' fill='white' text-anchor='middle'>AM</text></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23334155'/><text x='16' y='22' font-family='Arial' font-weight='700' font-size='15' fill='white' text-anchor='middle'>AM</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#f3f6f7; --surface:#ffffff; --ink:#15181a; --muted:#5b6166; --line:#dde3e5;
-  --accent:#138D90; --accent-soft:#e0f2f2; --accent-ink:#ffffff; --grid:rgba(21,24,26,.04);
+  --accent:#334155; --accent-soft:#e6e9ee; --accent-ink:#ffffff; --grid:rgba(21,24,26,.04);
   --shadow:0 1px 2px rgba(0,0,0,.04),0 8px 24px rgba(0,0,0,.06);
 }
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
     --bg:#171c22; --surface:#20262e; --ink:#e8ece9; --muted:#9aa39e; --line:#323a44;
-    --accent:#4fd1c5; --accent-soft:#11292a; --accent-ink:#0f1a1d; --grid:rgba(232,236,233,.035);
+    --accent:#cbd5e1; --accent-soft:#2a323c; --accent-ink:#171c22; --grid:rgba(232,236,233,.035);
     --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.35);
   }
 }
 :root[data-theme="dark"]{
   --bg:#171c22; --surface:#20262e; --ink:#e8ece9; --muted:#9aa39e; --line:#323a44;
-  --accent:#4fd1c5; --accent-soft:#11292a; --accent-ink:#0f1a1d; --grid:rgba(232,236,233,.035);
+  --accent:#cbd5e1; --accent-soft:#2a323c; --accent-ink:#171c22; --grid:rgba(232,236,233,.035);
   --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.35);
 }
 *{box-sizing:border-box}
@@ -174,6 +174,13 @@ section{padding:72px 0 8px}
 .contact .wrap{display:flex;justify-content:space-between;align-items:center;gap:32px;flex-wrap:wrap}
 .contact h2{font-size:clamp(28px,4vw,40px)}
 .contact p{color:var(--muted);margin:10px 0 0;max-width:520px}
+.contact-text{flex:1 1 420px}
+.artwork{margin:0;flex:0 0 260px;max-width:260px}
+.artwork img{display:block;width:100%;height:auto;border-radius:6px;box-shadow:0 10px 30px rgba(0,0,0,.18)}
+.artwork figcaption{margin-top:10px;font-size:12px;line-height:1.5;color:var(--muted);font-style:italic}
+.artwork figcaption span{display:block;margin-top:4px;font-style:normal;font-family:"IBM Plex Mono",monospace;font-size:11px}
+.artwork a{display:block;transition:transform .2s}.artwork a:hover{transform:translateY(-3px)}
+@media (max-width:700px){.artwork{flex-basis:100%;max-width:200px;margin:0 auto}}
 footer{padding:22px 0;font-size:13px;color:var(--muted);background:var(--surface)}
 
 /* reveal */
@@ -485,15 +492,19 @@ footer{padding:22px 0;font-size:13px;color:var(--muted);background:var(--surface
 <!-- CONTACT -->
 <div class="contact" id="contact">
   <div class="wrap">
-    <div>
+    <div class="contact-text">
       <h2>Let's build something that moves.</h2>
       <p>Open to R&amp;D roles in robotics, actuator development, mechatronics and medical devices. References available on request.</p>
+      <div class="cta">
+        <a class="btn primary" href="mailto:97arunabhasit027@gmail.com">97arunabhasit027@gmail.com</a>
+        <a class="btn" href="https://www.linkedin.com/in/arunabha-majumder-681264107/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" href="https://www.instagram.com/surreal_art_engine/" target="_blank" rel="noopener">Instagram · Art</a>
+      </div>
     </div>
-    <div class="cta" style="margin:0">
-      <a class="btn primary" href="mailto:97arunabhasit027@gmail.com">97arunabhasit027@gmail.com</a>
-      <a class="btn" href="https://www.linkedin.com/in/arunabha-majumder-681264107/" target="_blank" rel="noopener">LinkedIn</a>
-      <a class="btn" href="https://www.instagram.com/surreal_art_engine/" target="_blank" rel="noopener">Instagram · Art</a>
-    </div>
+    <figure class="artwork">
+      <a href="https://www.instagram.com/surreal_art_engine/" target="_blank" rel="noopener" aria-label="See more of my art on Instagram"><img src="art_inner_spirit.jpg" alt="Acrylic painting by Arunabha Majumder: a face whose hair grows into tree branches, with bubbles on a blue and green background" loading="lazy" width="640" height="805"></a>
+      <figcaption>A dreamlike vision where the inner spirit blooms into a tree of boundless imagination and growth.<span>Medium: acrylic on canvas</span></figcaption>
+    </figure>
   </div>
 </div>
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Certificate preview"><button aria-label="Close">×</button><img alt=""></div>
